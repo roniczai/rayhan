@@ -1,0 +1,22 @@
+<%- include('partials/head', { title: 'Live Raffles', brandName }) %>
+<section class="hero">
+  <h1>Dubai's Premium Raffle Platform</h1>
+  <p>Win houses, cars, yachts, and luxury gifts with secure AED checkout.</p>
+</section>
+
+<section class="raffle-grid">
+  <% raffles.forEach((raffle) => { %>
+    <article class="card">
+      <h3><%= raffle.title %></h3>
+      <p><%= raffle.description %></p>
+      <ul>
+        <li>Prize Value: AED <%= raffle.prize_value_aed.toLocaleString() %></li>
+        <li>Ticket Price: AED <%= raffle.ticket_price_aed %></li>
+        <li>Total Tickets: <%= raffle.total_tickets.toLocaleString() %></li>
+        <li>Draw Date: <%= raffle.draw_date %></li>
+      </ul>
+      <a href="/raffles/<%= raffle.id %>" class="btn">Buy Ticket</a>
+    </article>
+  <% }) %>
+</section>
+<%- include('partials/foot') %>

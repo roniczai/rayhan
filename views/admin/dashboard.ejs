@@ -1,0 +1,28 @@
+<%- include('../partials/head', { title: 'Admin Dashboard', brandName }) %>
+<section>
+  <h1>Admin Dashboard</h1>
+  <div class="stats">
+    <div class="stat"><h3>Users</h3><p><%= stats.users %></p></div>
+    <div class="stat"><h3>Raffles</h3><p><%= stats.raffles %></p></div>
+    <div class="stat"><h3>Tickets Sold</h3><p><%= stats.tickets %></p></div>
+    <div class="stat"><h3>Revenue (AED)</h3><p><%= Number(stats.revenue).toLocaleString() %></p></div>
+  </div>
+
+  <h2>Recent Tickets</h2>
+  <table>
+    <thead><tr><th>Ticket</th><th>Raffle</th><th>Email</th><th>Gateway</th><th>Amount</th><th>Date</th></tr></thead>
+    <tbody>
+      <% recentTickets.forEach((ticket) => { %>
+      <tr>
+        <td><%= ticket.ticket_number %></td>
+        <td><%= ticket.raffle_title %></td>
+        <td><%= ticket.email || 'guest' %></td>
+        <td><%= ticket.payment_gateway %></td>
+        <td>AED <%= ticket.amount_aed %></td>
+        <td><%= ticket.created_at %></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</section>
+<%- include('../partials/foot') %>
