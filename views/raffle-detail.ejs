@@ -1,0 +1,18 @@
+<%- include('partials/head', { title: raffle.title, brandName }) %>
+<section class="detail">
+  <h1><%= raffle.title %></h1>
+  <p><%= raffle.description %></p>
+  <p><strong>Ticket Price:</strong> AED <%= raffle.ticket_price_aed %></p>
+
+  <form id="checkout-form" class="checkout-form">
+    <input type="hidden" name="raffleId" value="<%= raffle.id %>" />
+    <label>Full Name <input type="text" name="name" required /></label>
+    <label>Email <input type="email" name="email" required /></label>
+    <label>Country Code (IN for India)
+      <input type="text" name="countryCode" value="AE" maxlength="2" required />
+    </label>
+    <button type="submit" class="btn">Proceed to Payment</button>
+  </form>
+  <pre id="checkout-result" class="result"></pre>
+</section>
+<%- include('partials/foot') %>
